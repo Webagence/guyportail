@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            /var/www/francegems.com/scripts/deploy-portal.sh
+            sudo /var/www/francegems.com/scripts/deploy-portal.sh
