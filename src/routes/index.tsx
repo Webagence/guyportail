@@ -4,7 +4,7 @@ import gemsImg from "@/assets/card-gems.jpg";
 import jewelryImg from "@/assets/card-jewelry.jpg";
 import { ArrowRight, Gem, Sparkles, ShieldCheck, Award, Globe2, Headphones, Instagram, Facebook, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 import { useState, type LucideIcon } from "react";
-import { useSettings } from "@/lib/settings";
+import { SettingsProvider, useSettings } from "@/lib/settings";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,8 +21,16 @@ export const Route = createFileRoute("/")({
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" },
     ],
   }),
-  component: HomePage,
+  component: HomeWrapper,
 });
+
+function HomeWrapper() {
+  return (
+    <SettingsProvider>
+      <HomePage />
+    </SettingsProvider>
+  );
+}
 
 const LANGS = [
   { code: "fr", label: "Français", flag: "🇫🇷" },
