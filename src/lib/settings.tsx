@@ -1,14 +1,17 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 
-export interface PortalData {
+export interface SiteSettings {
   logo: string;
   email: string;
   phone: string;
-  address: string;
-  siteName: string;
   siret: string;
-  socialInstagram: string;
-  socialFacebook: string;
+  address: string;
+  tagline: string;
+  siteName: string;
+  footerBrand: string;
+}
+
+export interface PortalContent {
   nav_universe: string; nav_house: string; nav_values: string; nav_contact: string;
   hero_badge: string; hero_title1: string; hero_title2: string; hero_desc: string;
   hero_cta1: string; hero_cta2: string; hero_scroll: string;
@@ -37,25 +40,38 @@ export interface PortalData {
 }
 
 const API_URL = "https://admin.francegems.com/api";
-type Ctx = { content: PortalData | null; loading: boolean };
-const PortalContext = createContext<Ctx>({ content: null, loading: true });
+
+type Ctx = {
+  settings: SiteSettings | null;
+  content: PortalContent | null;
+  loading: boolean;
+};
+
+const PortalContext = createContext<Ctx>({ settings: null, content: null, loading: true });
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [content, setContent] = useState<PortalData | null>(null);
+  const [settings, setSettings] = useState<SiteSettings | null>(null);
+  const [content, setContent] = useState<PortalContent | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${API_URL}/content/portal`, {
-      headers: { "X-Locale": localStorage.getItem("portal_locale") || "fr" },
-    })
-      .then((r) => r.json())
-      .then((data) => { if (data?.content) setContent(data.content as PortalData); })
+    const locale = localStorage.getItem("portal_locale") || "fr";
+    Promise.all([
+      fetch(`${API_URL}/content/settings`).then((r) => r.json()),
+      fetch(`${API_URL}/content/portal`, {
+        headers: { "X-Locale": locale },
+      }).then((r) => r.json()),
+    ])
+      .then(([settingsData, portalData]) => {
+        if (settingsData?.settings) setSettings(settingsData.settings);
+        if (portalData?.content) setContent(portalData.content);
+      })
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
 
   return (
-    <PortalContext.Provider value={{ content, loading }}>
+    <PortalContext.Provider value={{ settings, content, loading }}>
       {children}
     </PortalContext.Provider>
   );

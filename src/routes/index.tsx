@@ -82,13 +82,13 @@ function c(content: Record<string, string> | null | undefined, key: string, fall
 }
 
 function Header() {
-  const { content } = useSettings();
+  const { settings, content } = useSettings();
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <a href="/" className="flex items-center gap-2">
-          {content?.logo ? (
-            <img src={content.logo} alt={content.siteName || "France Gems"} className="h-14 md:h-20 w-auto object-contain" />
+          {settings?.logo ? (
+            <img src={settings.logo} alt={settings.siteName || "France Gems"} className="h-14 md:h-20 w-auto object-contain" />
           ) : (
             <><Gem className="h-5 w-5 text-gold" /><span className="font-display text-xl tracking-wide text-white">France <span className="text-gold-gradient">Gems</span></span></>
           )}
@@ -244,17 +244,17 @@ function Values() {
 }
 
 function Footer() {
-  const { content } = useSettings();
-  const brand = content?.siteName || "France Gems";
+  const { settings, content } = useSettings();
+  const brand = settings?.siteName || "France Gems";
   return (
     <footer id="contact" className="border-t border-border bg-card/40">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
-              {content?.logo ? <img src={content.logo} alt={brand} className="h-14 md:h-20 w-auto object-contain" /> : <><Gem className="h-5 w-5 text-gold" /><span className="font-display text-2xl">France <span className="text-gold-gradient">Gems</span></span></>}
+              {settings?.logo ? <img src={settings.logo} alt={brand} className="h-14 md:h-20 w-auto object-contain" /> : <><Gem className="h-5 w-5 text-gold" /><span className="font-display text-2xl">France <span className="text-gold-gradient">Gems</span></span></>}
             </div>
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground">{c(content, "footer_tagline", "")}</p>
+            <p className="mt-4 max-w-sm text-sm text-muted-foreground">{settings?.tagline || c(content, "footer_tagline", "")}</p>
             <div className="mt-6 flex gap-3">
               {content?.socialInstagram && <a href={content.socialInstagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-border hover:border-gold hover:text-gold transition"><Instagram className="h-4 w-4" /></a>}
               {content?.socialFacebook && <a href={content.socialFacebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-border hover:border-gold hover:text-gold transition"><Facebook className="h-4 w-4" /></a>}
@@ -270,14 +270,14 @@ function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.3em] text-gold">{c(content, "footer_contactTitle", "Contact")}</h4>
             <ul className="mt-5 space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-gold" /> {content?.email || "contact@francegems.com"}</li>
-              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-gold" /> {content?.phone || "+33 1 23 45 67 89"}</li>
-              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> {content?.address || "Place Vendôme, Paris"}</li>
+              <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-gold" /> {settings?.email || "contact@francegems.com"}</li>
+              <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-gold" /> {settings?.phone || "+33 1 23 45 67 89"}</li>
+              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> {settings?.address || "Place Vendôme, Paris"}</li>
             </ul>
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground md:flex-row">
-          <p>© {new Date().getFullYear()} {brand}{content?.siret ? ` · SIRET ${content.siret}` : ""} · {c(content, "footer_rights", "Tous droits réservés.")}</p>
+          <p>© {new Date().getFullYear()} {brand}{settings?.siret ? ` · SIRET ${settings.siret}` : ""} · {c(content, "footer_rights", "Tous droits réservés.")}</p>
           <p className="uppercase tracking-[0.3em]">{c(content, "footer_made", "Made with passion in Paris")}</p>
         </div>
       </div>
