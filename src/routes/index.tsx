@@ -120,7 +120,7 @@ function Hero() {
   const { content } = useSettings();
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden">
-      <img src={heroImg} alt="" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover object-center" loading="eager" fetchPriority="high" />
+      <img src={content?.hero_image || heroImg} alt="" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover object-center" loading="eager" fetchPriority="high" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
       <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center px-6 pt-32 pb-24 text-center">
@@ -149,8 +149,8 @@ function Hero() {
 function UniverseCards() {
   const { content } = useSettings();
   const cards = [
-    { img: gemsImg, kicker: c(content, "univ_u1", "Univers I"), title: c(content, "univ_gems", "Pierres Précieuses"), desc: c(content, "univ_gemsDesc", ""), cta: c(content, "univ_gemsCta", "Accéder au catalogue"), href: c(content, "univ_gemsUrl", "https://pierres.francegems.com") },
-    { img: jewelryImg, kicker: c(content, "univ_u2", "Univers II"), title: c(content, "univ_jewelry", "Bijoux"), desc: c(content, "univ_jewelryDesc", ""), cta: c(content, "univ_jewelryCta", "Accéder à la boutique"), href: c(content, "univ_jewelryUrl", "https://bijoux.francegems.com") },
+    { img: content?.univ_gems_image || gemsImg, kicker: c(content, "univ_u1", "Univers I"), title: c(content, "univ_gems", "Pierres Précieuses"), desc: c(content, "univ_gemsDesc", ""), cta: c(content, "univ_gemsCta", "Accéder au catalogue"), href: c(content, "univ_gemsUrl", "https://pierres.francegems.com") },
+    { img: content?.univ_jewelry_image || jewelryImg, kicker: c(content, "univ_u2", "Univers II"), title: c(content, "univ_jewelry", "Bijoux"), desc: c(content, "univ_jewelryDesc", ""), cta: c(content, "univ_jewelryCta", "Accéder à la boutique"), href: c(content, "univ_jewelryUrl", "https://bijoux.francegems.com") },
   ];
   return (
     <section id="univers" className="relative py-24 sm:py-32">

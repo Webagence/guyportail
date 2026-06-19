@@ -15,6 +15,9 @@ export interface PortalContent {
   nav_universe: string; nav_house: string; nav_values: string; nav_contact: string;
   hero_badge: string; hero_title1: string; hero_title2: string; hero_desc: string;
   hero_cta1: string; hero_cta2: string; hero_scroll: string;
+  hero_image: string;
+  univ_gems_image: string;
+  univ_jewelry_image: string;
   hero_cta1_url: string; hero_cta2_url: string;
   univ_kicker: string; univ_title1: string; univ_title2: string;
   univ_u1: string; univ_u2: string;
