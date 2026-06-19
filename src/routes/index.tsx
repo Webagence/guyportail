@@ -56,7 +56,7 @@ function HomePage() {
 
 function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
-  const getSaved = () => localStorage.getItem("portal_locale") || "fr";
+  const getSaved = () => typeof localStorage !== "undefined" ? localStorage.getItem("portal_locale") || "fr" : "fr";
   const [lang, setLang] = useState(getSaved);
   const current = LANGS.find((l) => l.code === lang)!;
   return (
