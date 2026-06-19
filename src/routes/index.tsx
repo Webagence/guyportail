@@ -109,7 +109,7 @@ function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
-          <a href="https://bijoux.francegems.com" className="hidden rounded-full border border-white/30 px-4 py-2 text-xs uppercase tracking-widest text-white/90 transition hover:border-gold hover:text-gold md:inline-block">Espace Pro</a>
+          <a href="https://bijoux.francegems.com/connexion?redirect=https://francegems.com" className="hidden rounded-full border border-white/30 px-4 py-2 text-xs uppercase tracking-widest text-white/90 transition hover:border-gold hover:text-gold md:inline-block">Espace Pro</a>
         </div>
       </div>
     </header>
