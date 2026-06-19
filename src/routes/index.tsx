@@ -35,7 +35,6 @@ function HomeWrapper() {
 const LANGS = [
   { code: "fr", label: "Français", flag: "🇫🇷" },
   { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "es", label: "Español", flag: "🇪🇸" },
 ] as const;
 
 const iconMap: Record<string, LucideIcon> = {
@@ -57,7 +56,8 @@ function HomePage() {
 
 function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState("fr");
+  const getSaved = () => localStorage.getItem("portal_locale") || "fr";
+  const [lang, setLang] = useState(getSaved);
   const current = LANGS.find((l) => l.code === lang)!;
   return (
     <div className="relative">
@@ -72,7 +72,7 @@ function LanguageSwitcher() {
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 z-50 mt-2 w-40 overflow-hidden rounded-xl border border-border bg-card shadow-xl">
             {LANGS.map((l) => (
-              <button key={l.code} onClick={() => { setLang(l.code); setOpen(false); window.location.reload(); }}
+              <button key={l.code} onClick={() => { localStorage.setItem("portal_locale", l.code); setLang(l.code); setOpen(false); window.location.reload(); }}
                 className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition hover:bg-accent/10 ${l.code === lang ? "text-gold" : "text-foreground"}`}>
                 <span className="text-base leading-none">{l.flag}</span>
                 <span>{l.label}</span>
