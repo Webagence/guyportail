@@ -123,16 +123,15 @@ function Hero() {
       <img src={content?.hero_image || heroImg} alt="" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover object-center" loading="eager" fetchPriority="high" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col items-start justify-center px-6 pt-32 pb-24">
-        <div className="max-w-3xl">
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-black/40 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-gold backdrop-blur">
+      <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center px-6 pt-32 pb-24 text-center">
+        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-black/40 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-gold backdrop-blur">
           <Sparkles className="h-3 w-3" /> {c(content, "hero_badge", "Maison Française depuis 2008")}
         </span>
-        <h1 className="font-display text-left text-5xl font-light leading-[1.05] text-white drop-shadow-[0_2px_30px_rgba(0,0,0,0.6)] sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="font-display text-5xl font-light leading-[1.05] text-white drop-shadow-[0_2px_30px_rgba(0,0,0,0.6)] sm:text-6xl md:text-7xl lg:text-8xl">
           {c(content, "hero_title1", "Bienvenue chez")}<br />
           <span className="text-gold-gradient italic">{c(content, "hero_title2", "France Gems")}</span>
         </h1>
-        <p className="mt-8 max-w-2xl text-left text-base text-white/90 sm:text-lg">{c(content, "hero_desc", "")}</p>
+        <p className="mt-8 max-w-2xl text-base text-white/90 sm:text-lg">{c(content, "hero_desc", "")}</p>
         <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <a href={c(content, "hero_cta1_url", "https://pierres.francegems.com")} className="btn-gold btn-gold-hover inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-medium uppercase tracking-widest">
             {c(content, "hero_cta1", "Explorer les Pierres")} <ArrowRight className="h-4 w-4" />
@@ -140,7 +139,6 @@ function Hero() {
           <a href={c(content, "hero_cta2_url", "https://bijoux.francegems.com")} className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-sm font-medium uppercase tracking-widest text-white backdrop-blur transition hover:border-gold hover:text-gold">
             {c(content, "hero_cta2", "Découvrir les Bijoux")} <ArrowRight className="h-4 w-4" />
           </a>
-        </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-white/60">{c(content, "hero_scroll", "Faites défiler")}</div>
       </div>
