@@ -127,10 +127,12 @@ function Hero() {
         <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-black/40 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-gold backdrop-blur">
           <Sparkles className="h-3 w-3" /> {c(content, "hero_badge", "Maison Française depuis 2008")}
         </span>
-        <h1 className="font-display text-5xl font-light leading-[1.05] text-white drop-shadow-[0_2px_30px_rgba(0,0,0,0.6)] sm:text-6xl md:text-7xl lg:text-8xl">
-          {c(content, "hero_title1", "Bienvenue chez")}<br />
-          <span className="text-gold-gradient italic">{c(content, "hero_title2", "France Gems")}</span>
-        </h1>
+        <div className="inline-block rounded-2xl border border-white/20 bg-black/30 px-8 py-6 backdrop-blur-md">
+          <h1 className="font-display text-5xl font-light leading-[1.05] text-white drop-shadow-[0_2px_30px_rgba(0,0,0,0.6)] sm:text-6xl md:text-7xl lg:text-8xl">
+            {c(content, "hero_title1", "Bienvenue chez")}<br />
+            <span className="text-gold-gradient italic">{c(content, "hero_title2", "France Gems")}</span>
+          </h1>
+        </div>
         <p className="mt-8 max-w-2xl text-base text-white/90 sm:text-lg">{c(content, "hero_desc", "")}</p>
         <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
           <a href={c(content, "hero_cta1_url", "https://pierres.francegems.com")} className="btn-gold btn-gold-hover inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-medium uppercase tracking-widest">
