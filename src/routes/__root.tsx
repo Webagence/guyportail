@@ -103,6 +103,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: "!function(){fetch('https://admin.francegems.com/api/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:location.href,path:location.pathname,host:location.hostname,title:document.title,referrer:document.referrer||'',device:/Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)?'mobile':'desktop'}),keepalive:true}).catch(function(){})}();" }} />
       </head>
       <body>
         {children}
